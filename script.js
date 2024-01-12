@@ -18,10 +18,32 @@ fetch ( 'https://opentdb.com/api.php?amount=${num}&category=${cat}&difficulty=${
   .then (res => {
     return res.json();
   })
-  .then (loadedQuestions => {
-    console.log(loadedQuestions);
-  } )
+then((data) => {
+        questions = data.results.map((data) => {
+            const currentquestion = {
+                question: data.question,
+            };
 
-  .catch (err => {
-    console.error(err);
-  } );
+            const anschoices = [...data.incorrect_answers];
+            currentquestion.answer = math.floor(math.random() * 3) + 1;
+            anschoices.splice(
+                currentquestion.answer - 1,
+                0,
+                data.correct_answer
+            );
+        
+          anschoices.forEach((choice, index) => {
+                currentquestion['choice' + (index + 1)] = choice;
+          });
+
+          return currentquestion;
+
+        });
+
+        gamestart();
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+
+    console.log(currentquestion)
