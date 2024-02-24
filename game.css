@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  color:black;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4{
+  margin-bottom: 16px;
+}
+
+h1{
+  font-size: 5rem;
+  color: black;
+}
+
+h1 > span{
+ font-size: 2.5rem;
+ font-weight: 200;
+}
+
+h2{
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  font-weight: 350;
+}
+
+h3{
+  font-size: 2.8rem;
+  font-weight: 300;
+}
+
+.answer-container{
+  display: flex;
+  margin-bottom: .5rem;
+  width: 100%;
+  font-size: 1.5rem;
+  border:0.1rem solid rgb(0, 0, 0, .2);
+  background-color: #bbc3c9;
+}
+
+.answer-prefix{
+  padding: 1.75rem 2.5rem;
+  background-color: #bbc3c9;
+  color: white;
+}
