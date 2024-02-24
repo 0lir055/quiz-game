@@ -6,6 +6,9 @@ const start = document.querySelector('#start'),
 
 let questions = [];
 
+const question = document.getElementById('question');
+const choices = document.getElementsByClassName('choice-text');
+
 let score = 0;
 
 const num = numquestion.value;
@@ -20,23 +23,23 @@ fetch ( 'https://opentdb.com/api.php?amount=${num}&category=${cat}&difficulty=${
   })
 then((data) => {
         questions = data.results.map((data) => {
-            const currentquestion = {
+            const current_question = {
                 question: data.question,
             };
 
             const anschoices = [...data.incorrect_answers];
-            currentquestion.answer = math.floor(math.random() * 3) + 1;
+            current_question.answer = math.floor(math.random() * 3) + 1;
             anschoices.splice(
-                currentquestion.answer - 1,
+                current_question.answer - 1,
                 0,
                 data.correct_answer
             );
         
           anschoices.forEach((choice, index) => {
-                currentquestion['choice' + (index + 1)] = choice;
+                current_question['choice' + (index + 1)] = choice;
           });
 
-          return currentquestion;
+          return current_question;
 
         });
 
@@ -45,5 +48,3 @@ then((data) => {
     .catch((err) => {
         console.error(err);
     });
-
-    console.log(currentquestion)

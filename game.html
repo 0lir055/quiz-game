@@ -8,26 +8,38 @@
 </head>
 <body>
   
-<div class = questionwrapper>
-  <div class = question-number>
+<div class = "progressbar">
+  <span class = "progress-bar-text"></span>
+</div>
+
+<div class = "questionwrapper">
+  <div class = "question-number">
     question<span class="currentquestion">1</span> of <span class="totalquestions">10</span>
   </div>
-  <div class = question>
+  <div id = "question">
     <h2>Question</h2>
   </div>
-  <div class = answer>
-    <button class = "option"><span>A</span></button>
-    <button class = "option"><span>B</span></button>
-    <button class = "option"><span>C</span></button>
-    <button class = "option"><span>D</span></button>
+<div class = "answer-container">
+  <div id = "game">
+    <h2>What is the answer?</h2>
   </div>
-  <div class = controls>
-    <button class = "previous">Previous</button>
-    <button class = "next">Next</button>
-    <div class = "quit">
-      <a href = "index.html">Quit</a>
-      </div>
+  <div class = "choice-prefix">
+    <p class = "choice">A</p>
+    <p class = "choice-text" data-number="1">Choice A</p>
   </div>
+  <div class = "choice-prefix">
+    <p class = "choice">B</p>
+    <p class = "choice-text" data-number="2">Choice B</p>
+  </div>
+  <div class = "choice-prefix">
+    <p class = "choice">C</p>
+    <p class = "choice-text" data-number="3">Choice C</p>
+  </div>
+  <div class = "choice-prefix">
+    <p class = "choice">D</p>
+    <p class = "choice-text" data-number="4">Choice D</p>
+  </div>
+</div>
 </div>
 
 </body>
