@@ -5,12 +5,17 @@
   padding: 0;
   box-sizing: content-box;
   font-family: 'Poppins', sans-serif;
-  background-color: #bbc3c9;
+}
+
+body{
+  background-color: #145DA0;
+  color: white;
 }
 label{
   display: block;
   margin-bottom: 5px;
   font-size: 13px;
+  color: white;
 }
 
 select{
@@ -37,10 +42,52 @@ button{
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: black;
+  background-color: #0C2D48;
   color: #fff;
   font-size: 13px;
   cursor: pointer;
 }
 
+.container {
+  width: 100vw;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 75rem;
+  margin: 0 auto;
+}
 
+.cotainer > *{
+  width: 100%;
+}
+
+.flex-column{
+  display:flex;
+  flex-direction:column;
+}
+
+flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.hide{
+  display: none;
+}
+
+button:hover{
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0;
+  transform: translate(-0.2rem);
+  transition: transform 125ms;
+  color: #B1D4E0;
+}
