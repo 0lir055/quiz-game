@@ -6,76 +6,71 @@
   <title>Quiz app</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<div>
-<div class = "title">
-  <h1>Quiz app</h1>
-</div>
-<div class = 'container'>
-<div class = settings>
-<label for = "amount">Number of questions</label>
-<select name = "amount" id = "amount">
-  <option value = "5">5</option>
-  <option value = "10">10</option>
-  <option value = "15">15</option>
-  <option value = "20">20</option>
-  <option value = "25">25</option>
-  <option value = "30">30</option>
-  <option value = "35">35</option>
-  <option value = "40">40</option>
-  <option value = "45">45</option>
-  <option value = "50">50</option>
-</select>
-<label for = "category">Category</label>
-<select name = "category" id = "category">
-  <option value = "Any">Any Category</option>
-  <option value = "GK">General Knowledge</option>
-  <option value = "Books">Entertainment:Books</option>
-  <option value = "Film">Entertainment:Film</option>
-  <option value = "Music">Entertainment:Music</option>
-  <option value = "Musicals">Entertainment:Musicals & Theatres</option>
-  <option value = "TV">Entertainment:Television</option>
-  <option value = "Video Games">Entertainment:Video Games</option>
-  <option value = "Board Games">Entertainment:Board Games</option>
-  <option value = "Science">Science & Nature</option>
-  <option value = "Computers">Science:Computers</option>
-  <option value = "Maths">Science:Mathematics</option>
-  <option value = "Myth">Mythology</option>
-  <option value = "Sports">Sports</option>
-  <option value = "Geography">Geography</option>
-  <option value = "History">History</option>
-  <option value = "Politics">Politics</option>
-  <option value = "Art">Art</option>
-  <option value = "Celebrities">Celebrities</option>
-  <option value = "Animals">Animals</option>
-  <option value = "Vehicles">Vehicles</option>
-  <option value = "Comics">Entertainment:Comics</option>
-  <option value = "Gadgets">Science:Gadgets</option>
-  <option value = "Anime">Entertainment:Japanese Anime & Manga</option>
-  <option value = "Cartoon">Entertainment:Cartoon & Animations</option>
-</select>
-<label for = "difficulty">Difficulty</label>
-<select name = "difficulty" id = "difficulty">
-  <option value = "Any">Any Difficulty</option>
-  <option value = "easy">Easy</option>
-  <option value = "medium">Medium</option>
-  <option value = "hard">Hard</option>
-</select>
-<label for = "time">Time</label>
-<select name = "Time" id = "time">
-  <option value = "5">5 seconds</option>
-  <option value = "10">10 seconds</option>
-  <option value = "20">20 seconds</option>
-  <option value = "30">30 seconds</option>
-  <option value = "40">40 seconds</option>
-  <option value = "50">50 seconds</option>
-  <option value = "60">60 seconds</option>
-  </select>
-</div>
-</div>
-<div class = start>
-<a href = game.html><button>Start</button></a>
-</div>
+<body>
+
+  <div class = 'container'>
+    <div class = 'title'>Quiz App</div>
+    <div class = 'game-settings'>
+      <label for = 'Number of Questions'>Number of Questions</label>
+      <select name = 'Number of Questions' id = 'Number of Questions'>
+        <option value = '5'>5</option>
+        <option value = '10'>10</option>
+        <option value = '15'>15</option>
+        <option value = '20'>20</option>
+        <option value = "25">25</option>
+        <option value = '30'>30</option>
+        <option value = '35'>35</option>
+        <option value = '40'>40</option>
+        <option value = '45'>45</option>
+        <option value = '50'>50</option>
+      </select>
+      <label for = 'Category'>Category</label>
+      <select name = 'Category' id = 'Category'>
+        <option value = '1'>General Knowledge</option>
+        <option value = '2'>Books</option>
+        <option value = '3'>Film</option>
+        <option value = '4'>Music</option>
+        <option value = '5'>Musicals & Theatres</option>
+        <option value = '6'>Television</option>
+        <option value = '7'>Video Games</option>
+        <option value = '8'>Board Games</option>
+        <option value = '9'>Science & Nature</option>
+        <option value = '10'>Computers</option>
+        <option value = '11'>Mathematics</option>
+        <option value = '12'>Mythology</option>
+        <option value = '13'>Sports</option>
+        <option value = '14'>Geography</option>
+        <option value = '15'>History</option>
+        <option value = '16'>Politics</option>
+        <option value = '17'>Art</option>
+        <option value = '18'>Celebrities</option>
+        <option value = '19'>Animals</option>
+        <option value = '20'>Vehicles</option>
+        <option value = '21'>Comics</option>
+        <option value = '22'>Gadgets</option>
+        <option value = '23'>Japanese Anime & Manga</option>
+        <option value = '24'>Cartoon & Animations</option>
+      </select>
+      <label for = 'Difficulty'>Difficulty</label>
+      <select name = 'Difficulty' id = 'Difficulty'>
+        <option value = 'easy'>Easy</option>
+        <option value = 'medium'>Medium</option>
+        <option value = 'hard'>Hard</option>
+      </select>
+      <label for = 'Time'>Time</label>
+      <select name = 'Time' id = 'Time'>
+        <option value = '10'>10</option>
+        <option value = '20'>20</option>
+        <option value = '30'>30</option>
+        <option value = '40'>40</option>
+        <option value = '50'>50</option>
+        <option value = '60'>60</option>
+      </select>
+
+      <button class="start-button" onclick="window.location.href='game.html'">Start Game</button>
+      
+  </div>
 
 
-<script src = script.js></script>
-</html>
+  
+</body>
