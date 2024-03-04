@@ -1,62 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-*{
-  margin:0;
-  padding:0;
-  color:black;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4{
-  margin-bottom: 16px;
-}
-
-h1{
-  font-size: 5rem;
-  color: black;
-}
-
-h1 > span{
- font-size: 2.5rem;
- font-weight: 200;
-}
-
-h2{
-  font-size: 3rem;
-  margin-bottom: 4rem;
-  font-weight: 350;
-}
-
-h3{
-  font-size: 2.8rem;
-  font-weight: 300;
-}
-
-.answer-container{
-  display: flex;
-  margin-bottom: 0.5rem;
+.countdown{
   width: 100%;
-  font-size: 1.6rem;
-  border:0.1rem solid ;
-  background-color: #0C2D48;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:25px;
 }
 
-.answer-container:hover{
-  cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem 0;
-  transition: transform 125ms;
+.countdown .progress{
+  position: relative;
+  width: 100%;
+  height: 25px;
+  background-color: transparent;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 2px solid #000;
 }
 
-.answer-prefix{
-  padding: 1.5rem 2.5rem;
-  background-color: #bbc3c9;
-  color: white;
-}
-
-.answer-text{
-padding: 1.75rem;
+.countdown .progress .progress-bar{
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  background: linear-gradient(to right , #ff105f, #ffad06);
+  transition: 1s linear;
 }
