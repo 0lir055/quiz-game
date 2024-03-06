@@ -24,7 +24,7 @@
   border-radius: 25px;
   overflow: hidden;
   margin-bottom: 10px;
-  border: 2px solid #000;
+  border: 2px solid white;
 }
 
 .countdown .progression .progression-bar{
