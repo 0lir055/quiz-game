@@ -3,8 +3,8 @@ const Progression = document.querySelector('.progression-bar'),
 
 const progress = (value) => {
   const percent = (value / time) * 100;
-  progressionbar.style.width = `${percent}%`;
-  progressiontext.innerHTML = `${value}`;
+  Progression.style.width = `${percent}%`;
+  Progressiontext.innerHTML = `${value}`;
 };
 
 const start = document.querySelector('.start-button'),
@@ -29,9 +29,16 @@ const startGame = () => {
       questions = data.results;
       setTimeout(() => {
         Currentq = 1;
-        showQuestion(questions[0]);
+        displayQuestion(questions[0]);
       }, 1000);
     });
 };
 
 start.addEventListener('click', startGame);
+
+const displayQuestion = (question) => {
+  const questiontxt = document.querySelector('question-text'),
+    optioncontainer = docuement.querySelector('.option-container');
+  question = document.querySelector('.question-num');
+
+};
