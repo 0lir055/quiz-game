@@ -13,7 +13,7 @@ const start = document.querySelector('.start-button'),
   difficulty = document.querySelector('#Difficulty'),
   time = document.querySelector('#Time');
 
-let questions = [],
+let question = [],
   Time = 30,
   score = 0,
   Currentq,
@@ -41,4 +41,10 @@ const displayQuestion = (question) => {
     optioncontainer = docuement.querySelector('.option-container');
   question = document.querySelector('.question-num');
 
+  questiontxt.innerHTML = question.question;
+
+  const answers = question.incorrect_answers.concat([question.correct_answer.tostring()]);
+
+  optioncontainer.innerHTML = '';
+  answers.sort(() => Math.random() - 0.5)
 };
