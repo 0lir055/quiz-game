@@ -13,7 +13,7 @@ const start = document.querySelector('.start-button'),
   difficulty = document.querySelector('#Difficulty'),
   time = document.querySelector('#Time');
 
-let question = [],
+let questions = [],
   Time = 30,
   score = 0,
   Currentq,
@@ -39,12 +39,28 @@ start.addEventListener('click', startGame);
 const displayQuestion = (question) => {
   const questiontxt = document.querySelector('question-text'),
     optioncontainer = docuement.querySelector('.option-container');
-  question = document.querySelector('.question-num');
+  questionnum = document.querySelector('.question-num');
 
   questiontxt.innerHTML = question.question;
 
   const answers = question.incorrect_answers.concat([question.correct_answer.tostring()]);
 
   optioncontainer.innerHTML = '';
-  answers.sort(() => Math.random() - 0.5)
+  answers.sort(() => Math.random() - 0.5);
+  answers.forEach((answer) => {
+    optioncontainer.innerHTML += `
+    <div class = 'answer-options'>
+        <span class = 'answer-text'>${answer}</span>
+        <span class = 'text-box'>
+          <span class = 'checkmark'>x</span>
+        </span>
+      </div>
+    `;
+
+  });
+
+  questionnum.innerHTML = `Question <span> class = 'current-question'>${question.indexOf(question) + 1}</span>
+ <span class = 'total-questions'>${questions.length}</span>`;
+
+
 };
