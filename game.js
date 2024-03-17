@@ -1,12 +1,10 @@
 const Progression = document.querySelector('.progression-bar'),
   Progressiontext = document.querySelector('.progression-text');
-
 const progress = (value) => {
   const percent = (value / time) * 100;
   Progression.style.width = `${percent}%`;
   Progressiontext.innerHTML = `${value}`;
 };
-
 let questions = [],
   Time = 30,
   score = 0,
@@ -14,11 +12,11 @@ let questions = [],
   timer;
 
 const startGame = async () => {
-const num = sessionStorage.getItem("num");
-const cat = sessionStorage.getItem("cat");
-const diff = sessionStorage.getItem("diff");
+  const num = sessionStorage.getItem("num");
+  const cat = sessionStorage.getItem("cat");
+  const diff = sessionStorage.getItem("diff");
 
-const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${diff}&type=multiple`;
+  const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${diff}&type=multiple`;
   // Log the parameter values
   console.log('Parameters:', num, cat, diff);
 
@@ -49,52 +47,23 @@ const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${d
     console.error('Failed to fetch questions:', error);
   }
 };
-
 startGame();
-
 const displayQuestion = (question) => {
-  const questionTxt = document.querySelector('.question-text'),
-        optionContainer = document.querySelector('.option-container');
-  let currentQuestionIndex = questions.indexOf(question); // Assuming you have a way to track the current question index
-  
-  questionTxt.innerHTML = question.question;
-  
-  // Clear previous options
-  optionContainer.innerHTML = '';
-
-  // Mix the answers
-  const answers = [...question.incorrect_answers];
-  const correctAnswerIndex = Math.floor(Math.random() * (answers.length + 1));
-  answers.splice(correctAnswerIndex, 0, question.correct_answer);
-  
-  // Display answers
-  answers.forEach((answer, index) => {
-    const optionHTML = document.createElement('div');
-    optionHTML.classList.add('answer-options');
-    optionHTML.innerHTML = `
-      <span class='answer-text'>${answer}</span>
-      <span class='text-box'>
-        <span class='checkmark'>✓</span>
-      </span>
-    `;
-    optionHTML.addEventListener('click', () => selectAnswer(answer, question.correct_answer, currentQuestionIndex));
-    optionContainer.appendChild(optionHTML);
+  const questiontxt = document.querySelector('.question-text'),
+    optioncontainer = document.querySelector('.option-container');
+  questionnum = document.querySelector('.question-num');
+  questiontxt.innerHTML = question.question;
+  const answers = question.incorrect_answers.concat([question.correct_answer.toString()]);
+  optioncontainer.innerHTML = '';
+  answers.sort(() => Math.random() - 0.5);
+  answers.forEach((answer) => {
+    optioncontainer.innerHTML += `
+      <div class = 'answer-options'>
+          <span class = 'answer-text'>${answer}</span>
+          <span class = 'text-box'>
+            <span class = 'checkmark'>x</span>
+          </span>
+        </div>
+      `;
   });
-};
-
-const selectAnswer = (selectedAnswer, correctAnswer, questionIndex) => {
-  if(selectedAnswer === correctAnswer) {
-    score++;
-    document.getElementById('score').textContent = score;
-  }
-  
-  if(questionIndex + 1 < questions.length) {
-    displayQuestion(questions[questionIndex + 1]);
-  } else {
-    endGame();
-  }
-};
-
-const endGame = () => {
-  window.location.href = 'end-screen.html';
 };
