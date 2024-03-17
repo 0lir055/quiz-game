@@ -17,13 +17,21 @@ const startGame = async () => {
   const num = sessionStorage.getItem("num");
   const cat = sessionStorage.getItem("cat");
   const diff = sessionStorage.getItem("diff");
-  const response = await fetch(`https://opentdb.com/api.php?amount=${num}&category=${cat}&difficulty=${diff}&type=multiple`);
-  const data = await response.json();
-  questions = data.results;
-  setTimeout(() => {
-    Currentq = 1;
-    displayQuestion(questions[0]);
-  }, 1000);
+  try {
+    const response = await fetch(`https://opentdb.com/api.php?amount=${num}&category=${cat}&difficulty=${diff}&type=multiple`);
+    const data = await response.json();
+    questions = data.results;
+    if (questions[0]) {
+      setTimeout(() => {
+        Currentq = 1;
+        displayQuestion(questions[0]);
+      }, 1000);
+    } else {
+      console.error('No questions were fetched');
+    }
+  } catch (error) {
+    console.error('Failed to fetch questions:', error);
+  }
 };
 
 startGame();
