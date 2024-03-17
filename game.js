@@ -53,25 +53,48 @@ const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${d
 startGame();
 
 const displayQuestion = (question) => {
-  const questiontxt = document.querySelector('.question-text'),
-    optioncontainer = document.querySelector('.option-container');
-  questionnum = document.querySelector('.question-num');
+  const questionTxt = document.querySelector('.question-text'),
+        optionContainer = document.querySelector('.option-container');
+  let currentQuestionIndex = questions.indexOf(question); // Assuming you have a way to track the current question index
+  
+  questionTxt.innerHTML = question.question;
+  
+  // Clear previous options
+  optionContainer.innerHTML = '';
 
-  questiontxt.innerHTML = question.question;
-
-  const answers = question.incorrect_answers.concat([question.correct_answer.toString()]);
-
-  optioncontainer.innerHTML = '';
-  answers.sort(() => Math.random() - 0.5);
-  answers.forEach((answer) => {
-    optioncontainer.innerHTML += `
-      <div class = 'answer-options'>
-          <span class = 'answer-text'>${answer}</span>
-          <span class = 'text-box'>
-            <span class = 'checkmark'>x</span>
-          </span>
-        </div>
-      `;
+  // Mix the answers
+  const answers = [...question.incorrect_answers];
+  const correctAnswerIndex = Math.floor(Math.random() * (answers.length + 1));
+  answers.splice(correctAnswerIndex, 0, question.correct_answer);
+  
+  // Display answers
+  answers.forEach((answer, index) => {
+    const optionHTML = document.createElement('div');
+    optionHTML.classList.add('answer-options');
+    optionHTML.innerHTML = `
+      <span class='answer-text'>${answer}</span>
+      <span class='text-box'>
+        <span class='checkmark'>✓</span>
+      </span>
+    `;
+    optionHTML.addEventListener('click', () => selectAnswer(answer, question.correct_answer, currentQuestionIndex));
+    optionContainer.appendChild(optionHTML);
   });
+};
 
+const selectAnswer = (selectedAnswer, correctAnswer, questionIndex) => {
+  if(selectedAnswer === correctAnswer) {
+    score++;
+    document.getElementById('score').textContent = score;
+  }
+  
+  if(questionIndex + 1 < questions.length) {
+    displayQuestion(questions[questionIndex + 1]);
+  } else {
+    endGame();
+  }
+};
+
+const endGame = () => {
+  window.location.href = 'end-screen.html';
 };
