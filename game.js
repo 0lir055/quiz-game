@@ -52,8 +52,11 @@ const displayQuestion = (question) => {
   const questiontxt = document.querySelector('.question-text'),
     optioncontainer = document.querySelector('.option-container');
   questionnum = document.querySelector('.question-num');
+
   questiontxt.innerHTML = question.question;
+
   const answers = question.incorrect_answers.concat([question.correct_answer.toString()]);
+
   optioncontainer.innerHTML = '';
   answers.sort(() => Math.random() - 0.5);
   answers.forEach((answer) => {
