@@ -14,20 +14,28 @@ let questions = [],
   timer;
 
 const startGame = async () => {
-  const number = sessionStorage.getItem("num");
-  const category = sessionStorage.getItem("cat");
-  const difficulty = sessionStorage.getItem("diff");
-  console.log(number, category, difficulty)
+const num = sessionStorage.getItem("num");
+const cat = sessionStorage.getItem("cat");
+const diff = sessionStorage.getItem("diff");
+
+const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${diff}&type=multiple`;
+  // Log the parameter values
+  console.log('Parameters:', num, cat, diff);
+
+
+  // Log the URL
+  console.log('URL:', url);
+
   try {
-    const response = await fetch(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=multiple`);
+    const response = await fetch(url);
     const data = await response.json();
     if (data.response_code !== 0) {
-  console.error('API returned an error:', data);
-  if (data.response_code === 1) {
-    alert('Not enough questions in the selected category. Please select a different category or reduce the number of questions.');
-  }
-  return;
-}
+      console.error('API returned an error:', data);
+      if (data.response_code === 1) {
+        alert('Not enough questions in the selected category. Please select a different category or reduce the number of questions.');
+      }
+      return;
+    }
     questions = data.results;
     if (questions[0]) {
       setTimeout(() => {
