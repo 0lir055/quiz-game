@@ -29,7 +29,7 @@ const startGame = async () => {
 startGame();
 
 const displayQuestion = (question) => {
-  const questiontxt = document.querySelector('question-text'),
+  const questiontxt = document.querySelector('.question-text'),
     optioncontainer = document.querySelector('.option-container');
   questionnum = document.querySelector('.question-num');
 
