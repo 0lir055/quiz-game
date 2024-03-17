@@ -61,12 +61,23 @@ const displayQuestion = (question) => {
   answers.sort(() => Math.random() - 0.5);
   answers.forEach((answer) => {
     optioncontainer.innerHTML += `
-      <div class = 'answer-options'>
+      <div class = 'answeroptions'>
           <span class = 'answer-text'>${answer}</span>
           <span class = 'text-box'>
             <span class = 'checkmark'>x</span>
           </span>
         </div>
       `;
+  });
+  const optionsdiv = document.querySelectorAll('.answeroptions')
+  optionsdiv.forEach((answeroptions) => {
+    answeroptions.addEventListener("click", () => {
+      if (!answeroptions.classList.contains("checked")) {
+        optionsdiv.forEach((answeroptions) => {
+          answeroptions.classList.remove("Selected")
+        });
+        answeroptions.classList.add("selected")
+      };
+    });
   });
 };

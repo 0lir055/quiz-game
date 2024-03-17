@@ -62,7 +62,7 @@
   margin-bottom: 20px;
 }
 
-.q-wrapper .option-container .answer-options {
+.q-wrapper .option-container .answeroptions {
   cursor: pointer;
   width: 100%;
   height: 70px;
@@ -78,7 +78,7 @@
   transition: 0.5s linear;
 }
 
-.answer-options .text-box {
+.answeroptions .text-box {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -90,16 +90,16 @@
   justify-content: center;
 }
 
-.answer-options:hover .text-box {
+.answeroptions:hover .text-box {
   background-color: #ff105f;
   border-color: #ff105f;
 }
 
-.answer-options .text-box .checkmark{
+.answeroptions .text-box .checkmark{
   opacity: 0;
 }
 
-.answer-options:hover .text-box .checkmark{
+.answeroptions:hover .text-box .checkmark{
   opacity: 1;
   color: black;
 }
