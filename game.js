@@ -74,7 +74,7 @@ const displayQuestion = (question) => {
     answeroptions.addEventListener("click", () => {
       if (!answeroptions.classList.contains("checked")) {
         optionsdiv.forEach((answeroptions) => {
-          answeroptions.classList.remove("Selected")
+          answeroptions.classList.remove("selected")
         });
         answeroptions.classList.add("selected")
       };
