@@ -98,6 +98,16 @@
 .answeroptions .text-box .checkmark{
   opacity: 0;
 }
+ .selected .text-box {
+  background-color: #ff105f;
+  border-color: #ff105f;
+}
+
+.selected .text-box .checkmark{
+  opacity: 1;
+}
+
+
 
 .answeroptions:hover .text-box .checkmark{
   opacity: 1;

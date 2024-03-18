@@ -16,7 +16,7 @@ const startGame = async () => {
   const cat = sessionStorage.getItem("cat");
   const diff = sessionStorage.getItem("diff");
 
-  const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${diff}&type=multiple`;
+  const url = `https://opentdb.com/api.php?amount=${num}&category=1&difficulty=${diff}&type=multiple`;
   // Log the parameter values
   console.log('Parameters:', num, cat, diff);
 
@@ -72,12 +72,14 @@ const displayQuestion = (question) => {
   const optionsdiv = document.querySelectorAll('.answeroptions')
   optionsdiv.forEach((answeroptions) => {
     answeroptions.addEventListener("click", () => {
+      console.log('clicked');
       if (!answeroptions.classList.contains("checked")) {
         optionsdiv.forEach((answeroptions) => {
-          answeroptions.classList.remove("selected")
+          answeroptions.classList.remove("selected");
         });
-        answeroptions.classList.add("selected")
+        answeroptions.classList.add("selected");
       };
     });
+    console.log('added event listerner');
   });
 };
