@@ -11,12 +11,15 @@ let questions = [],
   Currentq,
   timer;
 
+let time;
+
 const startGame = async () => {
   const num = sessionStorage.getItem("num");
   const cat = sessionStorage.getItem("cat");
   const diff = sessionStorage.getItem("diff");
+  time = sessionStorage.getItem("time");
 
-  const url = `https://opentdb.com/api.php?amount=${num}&category=1&difficulty=${diff}&type=multiple`;
+  const url = `https://opentdb.com/api.php?amount=${num}&category=9&difficulty=${diff}&type=multiple`;
   // Log the parameter values
   console.log('Parameters:', num, cat, diff);
 
@@ -82,4 +85,6 @@ const displayQuestion = (question) => {
     });
     console.log('added event listerner');
   });
+
+  console.log(time)
 };
