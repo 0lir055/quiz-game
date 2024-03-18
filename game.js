@@ -83,8 +83,27 @@ const displayQuestion = (question) => {
         answeroptions.classList.add("selected");
       };
     });
-    console.log('added event listerner');
+    console.log('added event listener');
   });
 
-  console.log(time)
+ let timeValue = parseInt(time)
+ startTimer(timeValue)
 };
+
+const startTimer = (timeValue) => {
+  timer = setInterval(() => {
+    if (timeValue >= 0) {
+      console.log('Current time:', timeValue); // Log the current time
+      progress(timeValue);
+      timeValue--;
+    } else{
+      checkanswer()
+    }
+  }, 1000); // Run every second
+};
+
+const submit = document.querySelector('.submit-q'),
+  next = document.querySelector('.next-q');
+submit.addEventListener("Click", () =>{
+  checkanswer();
+});
