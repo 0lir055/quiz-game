@@ -86,8 +86,8 @@ const displayQuestion = (question) => {
     console.log('added event listener');
   });
 
- let timeValue = parseInt(time)
- startTimer(timeValue)
+  let timeValue = parseInt(time)
+  startTimer(timeValue)
 };
 
 const startTimer = (timeValue) => {
@@ -96,7 +96,7 @@ const startTimer = (timeValue) => {
       console.log('Current time:', timeValue); // Log the current time
       progress(timeValue);
       timeValue--;
-    } else{
+    } else {
       checkanswer()
     }
   }, 1000); // Run every second
@@ -104,6 +104,59 @@ const startTimer = (timeValue) => {
 
 const submit = document.querySelector('.submit-q'),
   next = document.querySelector('.next-q');
-submit.addEventListener("Click", () =>{
+submit.addEventListener("click", () => {
   checkanswer();
 });
+
+next.addEventListener("click", () => {
+  nextquestion();
+  submit.style.display = "block";
+  next.style.display = "none";
+});
+
+const checkanswer = () => {
+  clearInterval(timer);
+  const selectedanswer = document.querySelector('.answeroptions.selected');
+  if (selectedanswer) {
+    const answer = selectedanswer.querySelector('.answer-text').innerHTML;
+    console.log(Currentq);
+    if (answer === questions[Currentq - 1].correct_answer) {
+      score++;
+      selectedanswer.classList.add("correct");
+    } else {
+      selectedanswer.classList.add("wrong");
+      // Highlight the correct answer in green
+      const correctoption = document.querySelectorAll('.answeroptions').forEach((option) => {
+        if (option.querySelector('.answer-text').innerHTML === questions[Currentq - 1].correct_answer) {
+          option.classList.add("correct");
+        }
+      });
+    }
+  } else {
+    const correctoption = document.querySelectorAll('.answeroptions').forEach((option) => {
+      if (option.querySelector('.answer-text').innerHTML === questions[Currentq - 1].correct_answer) {
+        option.classList.add("correct");
+      }
+    });
+
+  }
+  const answersdiv = document.querySelectorAll('.answeroptions');
+  answersdiv.forEach((answeroptions) => {
+    answeroptions.classList.add("checked");
+
+    submit.style.display = "none";
+    next.style.display = "block";
+  });
+
+};
+
+const nextquestion = () => {
+  Currentq++;
+  if (Currentq <= questions.length) {
+    displayQuestion(questions[Currentq - 1]);
+  } else {
+    console.log('Game over');
+    sessionStorage.setItem("score", score);
+    location.href = "end-screen.html"
+  }
+};

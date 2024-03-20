@@ -107,7 +107,13 @@
   opacity: 1;
 }
 
+.correct {
+   border-color: #0cef2a;
+}
 
+.incorrect{
+  border-color:#fc3939;;
+}
 
 .answeroptions:hover .text-box .checkmark{
   opacity: 1;
