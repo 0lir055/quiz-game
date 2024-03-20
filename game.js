@@ -1,10 +1,12 @@
-const Progression = document.querySelector('.progression-bar'),
-  Progressiontext = document.querySelector('.progression-text');
-const progress = (value) => {
+const Progression = document.querySelector('.progression-bar');
+const Progressiontext = document.querySelector('.progression-text');
+
+  const progress = (value) => {
   const percent = (value / time) * 100;
   Progression.style.width = `${percent}%`;
   Progressiontext.innerHTML = `${value}`;
 };
+
 let questions = [],
   Time = 30,
   score = 0,
@@ -53,8 +55,8 @@ const startGame = async () => {
 };
 startGame();
 const displayQuestion = (question) => {
-  const questiontxt = document.querySelector('.question-text'),
-    optioncontainer = document.querySelector('.option-container');
+  const questiontxt = document.querySelector('.question-text');
+  const optioncontainer = document.querySelector('.option-container');
   questionnum = document.querySelector('.question-num');
 
   questiontxt.innerHTML = question.question;
@@ -73,6 +75,7 @@ const displayQuestion = (question) => {
         </div>
       `;
   });
+  
   const optionsdiv = document.querySelectorAll('.answeroptions')
   optionsdiv.forEach((answeroptions) => {
     answeroptions.addEventListener("click", () => {
@@ -98,7 +101,8 @@ const startTimer = (timeValue) => {
       progress(timeValue);
       timeValue--;
     } else {
-      checkanswer()
+      clearInterval(timer); // Clear the interval
+      checkanswer();
     }
   }, 1000); // Run every second
 };
@@ -125,7 +129,7 @@ const checkanswer = () => {
       score++;
       selectedanswer.classList.add("correct");
     } else {
-      selectedanswer.classList.add("wrong");
+      selectedanswer.classList.add("incorrect");
       // Highlight the correct answer in green
       const correctoption = document.querySelectorAll('.answeroptions').forEach((option) => {
         if (option.querySelector('.answer-text').innerHTML === questions[Currentq - 1].correct_answer) {
