@@ -49,6 +49,7 @@ const startGame = async () => {
   } catch (error) {
     console.error('Failed to fetch questions:', error);
   }
+  document.querySelector('.totalquestions').innerHTML = `${num}`;
 };
 startGame();
 const displayQuestion = (question) => {
@@ -159,4 +160,5 @@ const nextquestion = () => {
     sessionStorage.setItem("score", score);
     location.href = "end-screen.html"
   }
+
 };
