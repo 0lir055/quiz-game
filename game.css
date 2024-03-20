@@ -107,12 +107,12 @@
   opacity: 1;
 }
 
-.correct {
-   border-color: #0cef2a;
+.answeroptions.correct {
+   background-color: green;
 }
 
-.incorrect{
-  border-color:#fc3939;;
+.answeroptions.incorrect{
+  background-color:red;;
 }
 
 .answeroptions:hover .text-box .checkmark{
