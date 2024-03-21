@@ -58,7 +58,7 @@ startGame();
 const displayQuestion = (question) => {
   const questiontxt = document.querySelector('.question-text');
   const optioncontainer = document.querySelector('.option-container'),
-  questionnum = document.querySelector('.questionquestion');
+  questionnum = document.querySelector('.currentquestion');
 
   questiontxt.innerHTML = question.question;
 
@@ -87,7 +87,7 @@ answers.forEach((answer) => {
   optioncontainer.appendChild(answerOption);
 });
   
-questionnum.innerHTML = `${Currentq} `;
+questionnum.innerHTML = ` ${Currentq} /  `;
 
   const optionsdiv = document.querySelectorAll('.answeroptions')
   optionsdiv.forEach((answeroptions) => {
