@@ -7,6 +7,20 @@
   font-family: "Poppins", sans-serif;
 }
 
+.submit-q{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius:5px ;
+  background: #ccc;
+  cursor: pointer;
+
+}
+
+
 .countdown{
   width: 100%;
   height: 75px;
@@ -25,6 +39,11 @@
   overflow: hidden;
   margin-bottom: 10px;
   border: 2px solid white;
+}
+
+.answeroptions:hover .text-box {
+  background-color: #ff105f;
+  border-color: #ff105f;
 }
 
 .countdown .progression .progression-bar{
@@ -53,6 +72,11 @@
 
 .q-wrapper .question-number .total-questions{
   color:#ccc;
+}
+
+.answeroptions:hover .text-box .checkmark{
+  opacity: 1;
+  color: black;
 }
 
 .q-wrapper .question-text{
@@ -90,10 +114,6 @@
   justify-content: center;
 }
 
-.answeroptions:hover .text-box {
-  background-color: #ff105f;
-  border-color: #ff105f;
-}
 
 .answeroptions .text-box .checkmark{
   opacity: 0;
@@ -115,10 +135,6 @@
   background-color:red;;
 }
 
-.answeroptions:hover .text-box .checkmark{
-  opacity: 1;
-  color: black;
-}
 
 .q-wrapper .option-container{
   margin-bottom: 40px;
@@ -135,17 +151,4 @@
   border-radius: 5px ;
   cursor: pointer;
   display: none;
-}
-
-.submit-q{
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  border-radius:5px ;
-  background: #ccc;
-  cursor: pointer;
-
 }

@@ -8,8 +8,6 @@ const Progressiontext = document.querySelector('.progression-text');
 };
 
 let questions = [],
-  Time = 30,
-  score = 0,
   Currentq,
   timer;
 
@@ -53,29 +51,44 @@ const startGame = async () => {
   }
   document.querySelector('.totalquestions').innerHTML = `${num}`;
 };
+
+let score = 0;
+
 startGame();
 const displayQuestion = (question) => {
   const questiontxt = document.querySelector('.question-text');
-  const optioncontainer = document.querySelector('.option-container');
-  questionnum = document.querySelector('.question-num');
+  const optioncontainer = document.querySelector('.option-container'),
+  questionnum = document.querySelector('.questionquestion');
 
   questiontxt.innerHTML = question.question;
 
-  const answers = question.incorrect_answers.concat([question.correct_answer.toString()]);
+  const answers = [...question.incorrect_answers, question.correct_answer.toString()];
 
-  optioncontainer.innerHTML = '';
-  answers.sort(() => Math.random() - 0.5);
-  answers.forEach((answer) => {
-    optioncontainer.innerHTML += `
-      <div class = 'answeroptions'>
-          <span class = 'answer-text'>${answer}</span>
-          <span class = 'text-box'>
-            <span class = 'checkmark'>x</span>
-          </span>
-        </div>
-      `;
-  });
+optioncontainer.innerHTML = '';
+answers.sort(() => Math.random() - 0.5);
+
+answers.forEach((answer) => {
+  const answerOption = document.createElement('div');
+  answerOption.className = 'answeroptions';
+
+  const answerText = document.createElement('span');
+  answerText.className = 'answer-text';
+  answerText.textContent = answer;
+
+  const textBox = document.createElement('span');
+  textBox.className = 'text-box';
+
+  const checkmark = document.createElement('span');
+  checkmark.className = 'checkmark';
+  checkmark.textContent = 'x';
+
+  textBox.appendChild(checkmark);
+  answerOption.append(answerText, textBox);
+  optioncontainer.appendChild(answerOption);
+});
   
+questionnum.innerHTML = `${Currentq} `;
+
   const optionsdiv = document.querySelectorAll('.answeroptions')
   optionsdiv.forEach((answeroptions) => {
     answeroptions.addEventListener("click", () => {
@@ -119,50 +132,43 @@ next.addEventListener("click", () => {
   next.style.display = "none";
 });
 
+const highlightCorrectAnswer = () => {
+  document.querySelectorAll('.answeroptions').forEach((option) => {
+    if (option.querySelector('.answer-text').textContent === questions[Currentq - 1].correct_answer) {
+      option.classList.add("correct");
+    }
+  });
+};
+
 const checkanswer = () => {
   clearInterval(timer);
   const selectedanswer = document.querySelector('.answeroptions.selected');
   if (selectedanswer) {
-    const answer = selectedanswer.querySelector('.answer-text').innerHTML;
+    const answer = selectedanswer.querySelector('.answer-text').textContent;
     console.log(Currentq);
     if (answer === questions[Currentq - 1].correct_answer) {
       score++;
       selectedanswer.classList.add("correct");
     } else {
       selectedanswer.classList.add("incorrect");
-      // Highlight the correct answer in green
-      const correctoption = document.querySelectorAll('.answeroptions').forEach((option) => {
-        if (option.querySelector('.answer-text').innerHTML === questions[Currentq - 1].correct_answer) {
-          option.classList.add("correct");
-        }
-      });
+      highlightCorrectAnswer();
     }
   } else {
-    const correctoption = document.querySelectorAll('.answeroptions').forEach((option) => {
-      if (option.querySelector('.answer-text').innerHTML === questions[Currentq - 1].correct_answer) {
-        option.classList.add("correct");
-      }
-    });
-
+    highlightCorrectAnswer();
   }
-  const answersdiv = document.querySelectorAll('.answeroptions');
-  answersdiv.forEach((answeroptions) => {
-    answeroptions.classList.add("checked");
 
-    submit.style.display = "none";
-    next.style.display = "block";
-  });
-
+  // Show the next button and hide the submit button
+  next.style.display = 'block';
+  submit.style.display = 'none';
 };
 
 const nextquestion = () => {
-  Currentq++;
-  if (Currentq <= questions.length) {
-    displayQuestion(questions[Currentq - 1]);
+  if (Currentq < questions.length) {
+    displayQuestion(questions[Currentq]);
+    Currentq++;
   } else {
     console.log('Game over');
     sessionStorage.setItem("score", score);
-    location.href = "end-screen.html"
+    location.href = "end-screen.html";
   }
-
 };
